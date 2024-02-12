@@ -118,3 +118,39 @@ for i in range(random.randint(0, 50)):
     my_list.append(random.randint(-100,100))
     
 print(my_list)
+
+# Exc. 3
+
+paragraph = """Friendship contrasted solicitude insipidity in introduced literature it. He seemed denote except as oppose do spring my. Between any may mention evening age shortly can ability regular. He shortly sixteen of colonel colonel evening cordial to. Although jointure an my of mistress servants am weddings. Age why the therefore education unfeeling for arranging. Above again money own scale maids ham least led. Returned settling produced strongly ecstatic use yourself way. Repulsive extremity enjoyment she perceived nor.Perpetual sincerity out suspected necessary one but provision satisfied. Respect nothing use set waiting pursuit nay you looking. If on prevailed concluded ye abilities. Address say you new but minuter greater. Do denied agreed in innate. Can and middletons thoroughly themselves him. Tolerably sportsmen belonging in september no am immediate newspaper. Theirs expect dinner it pretty indeed having no of. Principle september she conveying did eat may extensive"""
+
+chars = len(paragraph)
+sentences = len(paragraph.split("."))
+words_len = len(paragraph.split(" "))
+words = paragraph.split(" ")
+
+unique_words = list(set(words))
+non_unique_words = words_len - len(unique_words)
+print(f"This very long string contains {chars} characters, {sentences} sentences, {words_len} words and {len(unique_words)} unique words!")
+
+non_unique_words = words_len - len(unique_words)
+print(non_unique_words)
+
+non_whitespace_chars = [i for i in paragraph if not i.isspace()]
+print(len(non_whitespace_chars))
+
+#Bonus: The average amount of words per sentence in the paragraph.
+sentences = paragraph.split(".")
+words_averages = [len(sentence.split(' ')) for sentence in sentences]
+print(f"There are {round(sum(words_averages) / len(words_averages))} words in each sentence on average")
+
+
+# Exc. 4
+user_input = input("Please, tell us something: ")
+user_input = user_input.split(" ")
+words_dict = {}
+
+for word in user_input:
+    print(not words_dict.get(word))
+    words_dict[word] = 1 if not words_dict.get(word) else words_dict[word] + 1
+
+print(words_dict)
