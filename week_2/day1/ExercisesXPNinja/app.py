@@ -12,7 +12,9 @@ To save changes permanently use configuration files on *nix systems (such as .ba
 """Alias creation in *nix system:
 alias custom_name='cmd(s) we want to shortcut'.
 Eg, alias py='python3'.
-Yo make alias persist - add it to 1 of the *nix config files (/.bashrc VS /.zshrc)
+To make alias persist - add it to 1 of the *nix config files (/.bashrc VS /.zshrc)
+vim ~/.bashrc
+alias py='python3'
 """
 
 # Exc. 3
