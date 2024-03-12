@@ -1,0 +1,177 @@
+/* Responsible Navbar - big screen */
+.navbar {
+  height: 9vh;
+  background-color: #333;
+  color: #fff;
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+/* sticky class added via JS */
+.sticky {
+  position: sticky;
+  top: 0;
+  opacity: 0.5;
+}
+.navbar-home {
+  transition: all 0.2s ease-in-out;
+}
+.reference {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+a,
+a:hover,
+a:focus,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+}
+a:hover {
+  transform: scale(1.2);
+}
+/*  hamburger / close icons should not be visible */
+.navbar-bars-icon,
+.navbar-close-icon {
+  display: none;
+}
+
+@media (max-width: 950px) {
+  /* hamburger icon appears */
+  .navbar-bars-icon {
+    display: inline;
+  }
+  /* links disappear */
+  .reference {
+    display: none;
+  }
+  /* this class is added by JS -> navbar ∆ style to show links vertically stacked */
+  .navbar-small-screen {
+    flex-direction: column;
+    height: auto;
+  }
+  /* when navbar-small-screen class is applied on the navbar
+  (which happens when the user clicks on the hamburger) - links appear  */
+  .navbar-small-screen .reference {
+    display: block;
+    font-size: 0.75rem;
+    padding: 5px 10px;
+    margin: 0;
+  }
+  /* I did not want to display a specific section on smaller screens, and also not a link to it */
+  .navbar-small-screen .reference[href="#skills"] {
+    display: none;
+  }
+}
+
+/* I did not want to display a specific section on smaller screens, and also not a link to it */
+/* S K I L L S */
+@media (max-width: 1150px) {
+  #skills {
+    display: none;
+  }
+  a[href="#skills"] {
+    display: none;
+  }
+}
+
+/** HTML 
+    <nav class="navbar">
+      <h2 class="navbar-home">
+        <i class="fa-solid fa-address-card" style="color: #ffffff"></i
+        >&nbsp;&nbsp;<span class="cursive-text">I am </span>Victoria
+      </h2>
+      <a href="#start" class="reference"
+        ><i class="fa fa-home" style="color: #ffffff"></i>&nbsp;<span
+          class="cursive-text"
+          >
+        </span>
+        Home</a
+      >
+      <a href="#experience" class="reference"
+        ><i class="fa fa-laptop" style="color: #ffffff"></i>&nbsp;<span
+          class="cursive-text"
+          >My
+        </span>
+        Experience</a
+      >
+      <a href="#education" class="reference"
+        ><i class="fa-solid fa-graduation-cap" style="color: #ffffff"></i
+        >&nbsp;<span class="cursive-text">My </span> Education</a
+      >
+      <a href="#skills" class="reference"
+        ><i class="fa-solid fa-list-check" style="color: #ffffff"></i
+        >&nbsp;<span class="cursive-text">My </span> Skills</a
+      >
+      <a href="#contact-me" class="reference"
+        ><i class="fa-regular fa-address-card" style="color: #ffffff"></i
+        >&nbsp;Contact <span class="cursive-text">Me</span>
+      </a>
+      <a href="" class="navbar-bars-icon">
+        <i class="fa fa-bars"></i>
+      </a>
+      <a href="" class="navbar-close-icon">
+        <i class="fa fa-close"></i>
+      </a>
+    </nav>
+  **/
+
+/**** NAVBAR JS
+  
+// sticky navbar
+const navbarHeight = navigationBar.getBoundingClientRect().height;
+const opts = {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navbarHeight}px`,
+};
+
+function stickyNavbarAction(entries) {
+  const entry = entries[0];
+
+  if (!entry.isIntersecting) navigationBar.classList.add("sticky");
+  else navigationBar.classList.remove("sticky");
+}
+const navObserver = new IntersectionObserver(stickyNavbarAction, opts);
+navObserver.observe(header);
+
+// not active navbar links fading out
+const handleNavbarHover = function (e) {
+  if (!e.target.classList.contains("reference")) return;
+
+  const hoveredLink = e.target;
+  const otherLinks = hoveredLink.parentElement.querySelectorAll(".reference");
+
+  navbarHome.style.opacity = this;
+  otherLinks.forEach((link) => {
+    if (link !== hoveredLink) link.style.opacity = this;
+  });
+};
+
+navigationBar.addEventListener("mouseover", handleNavbarHover.bind(0.5));
+navigationBar.addEventListener("mouseout", handleNavbarHover.bind(1));
+
+// responsive navbar
+navbarBarsIcon.addEventListener("click", (e) => {
+  navigationBar.className += " navbar-small-screen";
+  navbarBarsIcon.style.display = "none";
+  navbarCloseIcon.style.display = "inline";
+});
+
+navbarCloseIcon.addEventListener("click", (e) => {
+  navigationBar.className = "navbar";
+  navbarBarsIcon.style.display = "inline";
+  navbarCloseIcon.style.display = "none";
+});
+
+****/
